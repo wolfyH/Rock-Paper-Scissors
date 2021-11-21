@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+<p>Paper Rock and Scissors</p>
+
+
+
+<script>
+        let cont=1;
+        let Loo=0;
+        let Win=0;
+        let draw=0;
+        let comPp="";
+        let Result="";
+        while (cont<=5) 
+        {
+            function getcomp(min,max) 
+            {
+             let compP = Math.floor(Math.random()*(max-min) + 1);
+                switch (compP) {
+                    case 1:
+                        comPp="rock";
+                        break;
+                    case 2:
+                        comPp="paper";
+                        break;
+                    case 3:
+                        comPp="scissors";
+                        break;
+                    default:
+                        break;
+                }
+                return compP;
+            }
+
+            getcomp();
+            let value1 = getcomp(1,4);           
+            let text=prompt();
+            let Newtext=text.toLowerCase();
+         
+            function getPlayer(){
+                switch (Newtext) {
+                    case "rock":
+                        return 1;
+                        break;
+                    case "paper":
+                        return 2;
+                        break;
+                    case "scissors":
+                        return 3;
+                        break;
+                    default:
+                        alert("Write an acceptable option")
+                        cont-=1;
+                        break;
+                }
+            }
+            
+            getPlayer();
+            let NumbP=getPlayer();
+        
+            function comparation () {
+                    if (NumbP==value1 & NumbP!=0) {
+                        console.log("draw")
+                        draw+=1;
+                       result= "draw";   
+                    }
+                   if(NumbP!=value1 & NumbP!=0) { 
+                        switch (NumbP) {
+                            case 1:
+                                if (value1==2) {
+                                    Loo+=1;
+                                    NumbP=0;
+                                    result="WON";
+                                }
+                                else {
+                                    Win+=1;
+                                    NumbP=0;
+                                    return"WON";                                  
+                                    }
+                                break;
+                            case 2:
+                                    if (value1==3) {
+                                        Loo+=1;
+                                        NumbP=0;
+                                        result="LOST";
+                                    }
+                                    else {
+                                        Win+=1;
+                                        NumbP=0;
+                                        result="WON";
+                                    }
+                                    break;
+                            case 3:
+                                    if (value1==1) {
+                                        Loo+=1;
+                                        NumbP=0;
+                                        result="LOST";
+                                    }
+                                    else {
+                                        NumbP=0;
+                                        Win+=1;
+                                        result="WON";
+                                    }
+                                    break;
+                            default:
+                                break;
+                        }
+                        return result;
+                }
+
+            }
+
+        
+            comparation();
+            let comptex=comparation();
+            let final=`you ${comptex} ${Newtext} beats ${comPp}`;
+            cont++;
+            alert(final);
+        }
+
+    if(Win>Loo){
+        alert(`You Won,you had ${Win} Wins and ${Loo} Losts and ${draw-1} Draws`);
+    }
+    else if(Loo>Win) {
+        alert(`You LOST, you had ${Win} Wins and ${Loo} Losts and ${draw-1} Draws`);
+    }
+    else if (Loo==Win) {
+        alert(` ITS Drow, you had ${Win} Wins and ${Loo} Losts and ${draw-1} Draws`);
+    } 
+   
+
+</script>
+
+</body>
+</html>
